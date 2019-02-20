@@ -3,42 +3,49 @@ classes
  */
 .container {
     border: 1px solid black;
+    background-image: linear-gradient(deepskyblue, darkred);
 }
 .subcont {
-    border: 1px solid black;
+    width: 500px;
 }
 
 .diceclass {
-    border: 1px solid red;
+
     text-align:center;
+
 }
 
 .controlclass {
-    border: 1px solid red;
     text-align:center;
+
 }
 
 .colloums{
-    border: 1px solid blue;
+    border: 1px solid maroon;
+    width: 250px;
 }
 
 .labelseg{
-    padding: 10px;
+    padding: 5px;
 }
 
 label {
     display: inline-block;
     width: 140px;
     text-align: right;
+    color: white;
 }
 
+input{
+    width: 30px;
+}
 
 /*
 IDs
  */
 
 #container {
-    width: 800px;
+    width: 500px;
     margin: 30px auto;
     padding: 10px;
     display: grid;
@@ -61,7 +68,7 @@ IDs
 
 #controls {
     grid-area: controls;
-    padding: 20px;
+    padding: 10px;
     display: grid;
     grid-template-areas:
             "turn button";
@@ -80,5 +87,3 @@ IDs
 
 #col1{grid-area: col1}
 #col2{grid-area: col2}
-
-
