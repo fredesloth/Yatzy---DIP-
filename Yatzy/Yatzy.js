@@ -206,3 +206,14 @@ function valueFullHouse() {
     return 0;
 }
 
+function rollAction() {
+    let holds = [false, false, false, false, false];
+
+    //forsøg
+    let chbBox = [document.querySelector("checkbox")];
+
+    for(let i = 0; i < holds.length; i++){
+        
+    }
+}
+
