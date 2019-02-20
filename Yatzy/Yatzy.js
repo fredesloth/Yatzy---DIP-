@@ -206,14 +206,36 @@ function valueFullHouse() {
     return 0;
 }
 
+function holdDie(die){
+    if(die.held){
+        die.held = false;
+        die.style.opacity = 1;
+    } else {
+        die.style.opacity = 0.5;
+        die.held = true;
+    }
+}
+
 function rollAction() {
     let holds = [false, false, false, false, false];
 
     //forsøg
-    let chbBox = [document.querySelector("checkbox")];
+
 
     for(let i = 0; i < holds.length; i++){
-
+        values[i].held = false;
+        if (values[i].held = true){
+            holds[i] = true;
+        }
     }
+
+    throwDice(holds);
+    for(let i = 0; values.length; i++){
+        if(values[i] == 1){
+            document.getElementById("'" + i + "'").src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/1.png"
+        }
+        //document.getElementById(i).src= "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/"+"'" +values[i]+"'"+".png"
+    }
+
 }
 
