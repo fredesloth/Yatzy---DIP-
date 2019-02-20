@@ -213,7 +213,7 @@ function rollAction() {
     let chbBox = [document.querySelector("checkbox")];
 
     for(let i = 0; i < holds.length; i++){
-        
+
     }
 }
 

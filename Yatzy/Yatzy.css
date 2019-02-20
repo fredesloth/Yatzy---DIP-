@@ -31,9 +31,7 @@ label {
     width: 140px;
     text-align: right;
 }
-img {
-    width: 10%;
-}
+
 
 /*
 IDs
@@ -70,7 +68,7 @@ IDs
 }
 
 #turn{grid-area: turn;}
-#button{grid-area: button;}
+#bntRoll{grid-area: button;}
 
 
 #bottom {
