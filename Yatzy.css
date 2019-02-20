@@ -1,0 +1,86 @@
+/*
+classes
+ */
+.container {
+    border: 1px solid black;
+}
+.subcont {
+    border: 1px solid black;
+}
+
+.diceclass {
+    border: 1px solid red;
+    text-align:center;
+}
+
+.controlclass {
+    border: 1px solid red;
+    text-align:center;
+}
+
+.colloums{
+    border: 1px solid blue;
+}
+
+.labelseg{
+    padding: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+}
+img {
+    width: 10%;
+}
+
+/*
+IDs
+ */
+
+#container {
+    width: 800px;
+    margin: 30px auto;
+    padding: 10px;
+    display: grid;
+    grid-template-areas:
+            "top"
+            "bottom";
+}
+
+#top {
+    grid-area: top;
+    display: grid;
+    grid-template-areas:
+            "dice"
+            "controls";
+}
+
+#dice {
+    grid-area: dice;
+}
+
+#controls {
+    grid-area: controls;
+    padding: 20px;
+    display: grid;
+    grid-template-areas:
+            "turn button";
+}
+
+#turn{grid-area: turn;}
+#button{grid-area: button;}
+
+
+#bottom {
+    grid-area: bottom;
+    display: grid;
+    grid-template-areas:
+            "col1 col2 col3"
+}
+
+#col1{grid-area: col1}
+#col2{grid-area: col2}
+
+
