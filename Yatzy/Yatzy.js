@@ -229,12 +229,13 @@ function rollAction() {
         }
     }
 
+    //vi skal nok lave det om til tal og textfields i stedet for billeder
     throwDice(holds);
     for(let i = 0; values.length; i++){
         if(values[i] == 1){
             document.getElementById("'" + i + "'").src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/1.png"
         }
-        //document.getElementById(i).src= "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/"+"'" +values[i]+"'"+".png"
+
     }
 
 }
