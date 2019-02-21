@@ -3,7 +3,7 @@ classes
  */
 .container {
     border: 1px solid black;
-    background-image: linear-gradient(deepskyblue, darkred);
+    background-image: linear-gradient(darkgreen, limegreen);
 }
 .subcont {
     width: 500px;
@@ -21,8 +21,9 @@ classes
 }
 
 .colloums{
-    border: 1px solid maroon;
+    border: 1px solid yellow;
     width: 250px;
+    border-radius: 12px;
 }
 
 .labelseg{
@@ -37,7 +38,8 @@ label {
 }
 
 input{
-    width: 30px;
+    width: 50px;
+    border-radius: 12px;
 }
 
 /*
@@ -87,3 +89,13 @@ IDs
 
 #col1{grid-area: col1}
 #col2{grid-area: col2}
+
+#bntRoll{
+    background-color: limegreen;
+    border-radius: 12px;
+}
+
+.diebtn {
+    background-color: limegreen;
+    border-radius: 12px;
+}
