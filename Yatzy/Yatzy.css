@@ -47,6 +47,7 @@ IDs
  */
 
 #container {
+    border-radius: 12px;
     width: 500px;
     margin: 30px auto;
     padding: 10px;
@@ -93,9 +94,16 @@ IDs
 #bntRoll{
     background-color: limegreen;
     border-radius: 12px;
+    box-shadow: 0 5px grey;
+}
+
+#bntRoll:active{
+    box-shadow: 0 0px black;
+    transform: translateY(4px);
 }
 
 .diebtn {
     background-color: limegreen;
     border-radius: 12px;
+
 }
