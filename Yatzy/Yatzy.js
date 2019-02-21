@@ -231,12 +231,52 @@ function rollAction() {
 
     //vi skal nok lave det om til tal og textfields i stedet for billeder
     throwDice(holds);
-    for(let i = 0; values.length; i++){
-        if(values[i] == 1){
-            document.getElementById("'" + i + "'").src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/1.png"
-        }
+    //lav et array med de buttons vi har, og kør igennem det. det skal laves rundt om nuværende forloop
 
+    let dice = document.querySelectorAll("img");
+    let stringarr = ["https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/1.png",
+        "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/2.png",
+        "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/3.png",
+        "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/4.png",
+        "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/5.png",
+        "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/6.png"]
+    for(let i = 0; i<dice.length; i++){
+        dice[i].src=stringarr[i];
     }
 
-}
+    //for(let i = 0; values.length; i++){
+    //    if(values[i] == 1){
+    //        e.src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/1.png"
+    //    }else if(values[i] == 2){
+    //        e.src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/2.png"
+    //    }else if(values[i] == 3){
+    //        e.src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/3.png"
+    //    }else if(values[i] == 4){
+    //        e.src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/4.png"
+    //    }else if(values[i] == 5){
+    //        e.src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/5.png"
+    //    }else if(values[i] == 6){
+    //        e.src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/6.png"
+    //    }
 
+    document.getElementById("turn").value = "rolled: " + throwCount + " times";
+
+    let posres = getPossibleresults();
+    for (let i = 0; i < posres.length; i++){
+        let txtfields = document.querySelectorAll("col1res")
+        if (txtfields[i]){
+            // hvis txtfield !isDisabled
+            //set text til result
+        }
+    }
+
+    let btn = document.getElementById("btnRoll");
+    if (yatzy.getThrowCount() == 3) {
+        //btnR.setDisable(true);
+    }
+
+    }
+}
+document.getElementById("bntRoll").addEventListener("click", function () {
+    rollAction();
+});
