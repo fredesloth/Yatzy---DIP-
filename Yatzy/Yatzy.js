@@ -272,7 +272,7 @@ function rollAction() {
 
     let btn = document.getElementById("btnRoll");
     if (yatzy.getThrowCount() == 3) {
-        //btnR.setDisable(true);
+        //btn.setDisable(true);
     }
 
     }
