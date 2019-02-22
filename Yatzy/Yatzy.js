@@ -255,11 +255,11 @@ function endCurrentRound(){
         for (let i = 0; i < txfRes.length; i++) {
 
             // If one of the first six fields is selected, the value is added to the top sum
-            if (txfRes[i].hasFocus() === true && i < 6) {
+            if (txfRes[i] === document.activeElement && i < 6) {
                 sumValueUp = sumValueUp + txfRes[i].value;
             }
             // When one of the fields is selected, it will be deactivated
-            if (txfRes[i].hasFocus() === true) {
+            if (txfRes[i] === document.activeElement) {
                 txfRes[i].disabled = true;
             }
 
@@ -282,7 +282,7 @@ function endCurrentRound(){
         // resets all values in the dice pane (dice face values, checkboxes will be
         // unselected, rolled number will be reset and the Roll button will be
         // activated)
-        let btns = document.querySelector("diebtn");
+        let btns = document.querySelectorAll('diebtn');
         for (let i = 0; i < btns.length; i++) {
             //values[i].setText("0");
             //holds[i].setDisable(true); // the check boxes are deactivated because they turn to 0
@@ -388,6 +388,10 @@ document.getElementById("btnRoll").addEventListener("click", function () {
     rollAction();
 });
 
-document.querySelectorAll(".col1res").addEventListener('click', function () {
-    endCurrentRound(), true;
-} );
+let inputs = document.querySelectorAll(".col1res");
+for(let i = 0; i<inputs.length; i++){
+    inputs[i].addEventListener('click', function () {
+        endCurrentRound();
+    } );
+}
+
