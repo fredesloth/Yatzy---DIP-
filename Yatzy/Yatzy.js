@@ -347,47 +347,48 @@ function endCurrentRound(){
 
 
     document.getElementById('die1').addEventListener('click', function () {
-        if (holds[0] == true) {
-            holds[0] == false;
+        if (holds[0] === true) {
+            holds[0] = false;
             document.getElementById('die1').style.opacity = 1;
         } else {
-            holds[0] == true;
+            holds[0] = true;
             document.getElementById('die1').style.opacity = 0.5;
         }
+        console.log(holds)
     });
     document.getElementById('die2').addEventListener('click', function () {
-        if (holds[1] == true) {
-            holds[1] == false;
+        if (holds[1] === true) {
+            holds[1] = false;
             document.getElementById('die2').style.opacity = 1;
         } else {
-            holds[1] == true;
+            holds[1] = true;
             document.getElementById('die2').style.opacity = 0.5;
         }
     });
     document.getElementById('die3').addEventListener('click', function () {
-        if (holds[2] == true) {
-            holds[2] == false;
+        if (holds[2] === true) {
+            holds[2] = false;
             document.getElementById('die3').style.opacity = 1;
         } else {
-            holds[2] == true;
+            holds[2] = true;
             document.getElementById('die3').style.opacity = 0.5;
         }
     });
     document.getElementById('die4').addEventListener('click', function () {
-        if (holds[3] == true) {
-            holds[3] == false;
+        if (holds[3] === true) {
+            holds[3] = false;
             document.getElementById('die4').style.opacity = 1;
         } else {
-            holds[3] == true;
+            holds[3] = true;
             document.getElementById('die4').style.opacity = 0.5;
         }
     });
     document.getElementById('die5').addEventListener('click', function () {
-        if (holds[4] == true) {
-            holds[4] == false;
+        if (holds[4] === true) {
+            holds[4] = false;
             document.getElementById('die5').style.opacity = 1;
         } else {
-            holds[4] == true;
+            holds[4] = true;
             document.getElementById('die5').style.opacity = 0.5;
         }
     });
