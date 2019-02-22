@@ -291,7 +291,7 @@ function endCurrentRound(){
             btns[i].style.opacity = 1;
         }
         resetThrowCount();
-        btn.disabled = false;
+        document.getElementById('btnRoll').disabled = false;
 
         // updates the rolled number
         let rollCount = document.getElementById('turn').value = "rolled: " + throwCount;
