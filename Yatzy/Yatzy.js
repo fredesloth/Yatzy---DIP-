@@ -51,21 +51,21 @@ function setValues(newValues) {
 }
 
 function freqFaceValue() {
-    let sameFaceValues = [0, 0, 0, 0, 0, 0];
+    let sameFaceValues = [0, 0, 0, 0, 0, 0, 0];
 
     for(let i = 0; i < values.length; i++){
         if(values[i] === 1){
-            sameFaceValues[0]++;
-        }else if(values[i] === 2){
             sameFaceValues[1]++;
-        }else if(values[i] === 3){
+        }else if(values[i] === 2){
             sameFaceValues[2]++;
-        }else if(values[i] === 4){
+        }else if(values[i] === 3){
             sameFaceValues[3]++;
-        }else if(values[i] === 5){
+        }else if(values[i] === 4){
             sameFaceValues[4]++;
-        }else if(values[i] === 6){
+        }else if(values[i] === 5){
             sameFaceValues[5]++;
+        }else if(values[i] === 6){
+            sameFaceValues[6]++;
         }
     }
 
@@ -84,7 +84,7 @@ function valueSpecificFace(face) {
 function getPossibleresults() {
     let results = [];
     for (let i = 0; i <= 5; i++) {
-        results[i] = valueSpecificFace(i);
+        results[i] = valueSpecificFace(i + 1);
     }
     results[6] = valueOnePair();
     results[7] = valueTwoPair();
