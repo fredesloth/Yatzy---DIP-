@@ -3,10 +3,14 @@ let values = new Array(5);
 
 let throwCount = 0;
 
+let holds = [false, false, false, false, false];
+
 //I tvivl om 5 elle 6
 // let random = Math.floor(math.random()) * 5;
 let random = Math.random();
 
+let saveValueUp = 0;
+let saveValueDown = 0;
 
 function throwDice(holds = []) {
     for (let i = 0 ; i <= values.length; i++){
@@ -206,27 +210,30 @@ function valueFullHouse() {
     return 0;
 }
 
-function holdDie(die){
-    if(die.held){
-        die.held = false;
-        die.style.opacity = 1;
-    } else {
-        die.style.opacity = 0.5;
-        die.held = true;
-    }
-}
+
+
+// function holdDie(die){
+//    if(die.held){
+//        die.held = false;
+//        die.style.opacity = 1;
+//    } else {
+//        die.style.opacity = 0.5;
+//        die.held = true;
+//    }
+//}
+
+
 
 function rollAction() {
 
-    let holds = [false, false, false, false, false];
+    let newHolds = [false, false, false, false, false];
 
     //forsøg
 
 
     for(let i = 0; i < holds.length; i++){
-        values[i].held = false;
-        if (values[i].held = true){
-            holds[i] = true;
+        if (holds[i] = true){
+            newHolds[i] = true;
         }
     }
 
@@ -240,7 +247,7 @@ function rollAction() {
         "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/3.png",
         "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/4.png",
         "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/5.png",
-        "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/6.png"]
+        "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/6.png"];
     for(let i = 0; i<dice.length; i++){
         dice[i].src=stringarr[i];
     }
@@ -265,17 +272,99 @@ function rollAction() {
     let posres = getPossibleresults();
     for (let i = 0; i < posres.length; i++){
         let txtfields = document.querySelectorAll("col1res");
-        if (txtfields[i]){
-            // hvis txtfield !isDisabled
-            //set text til result
+        if (txtfields[i].disabled == false){
+            txtfields[i].value(posres[i] + '');
         }
     }
 
     let btn = document.getElementById("btnRoll");
     if (yatzy.getThrowCount() == 3) {
-        //btn.setDisable(true);
+        btn.disabled = true;
     }
 }
-document.getElementById("bntRoll").addEventListener("click", function () {
-    rollAction();
+
+// onload for rollAction
+onload = () => {
+    let btn = document.getElementById('btnRoll');
+    btn.onclick = rollAction();
+    onclick = event => console.log(event.type);
+};
+
+function endCurrentRound(){
+    if(throwCount != 0){
+        let txfRes = document.querySelectorAll("col1res");
+        for (let i = 0; i < txfRes.length; i++) {
+
+            // If one of the first six fields is selected, the value is added to the top sum
+            if (txfRes[i].hasFocus() == true && i < 6) {
+                saveValueUp = saveValueUp + txfRes[i].value;
+                // If it is one of the other fields selected, the value is added to the lower
+                // sum
+            } else if (txfResults[i].hasFocus() && i >= 6) {
+                saveValueDown = saveValueDown + txfRes[i].value;
+            }
+
+            // When one of the fields is selected, it will be deactivated
+            if (txfResults[i].isFocused() == true) {
+                txfRes[i].disabled = true;
+            }
+        }
+
+        // if the top sum is 63 or more - the bonus field will be 50
+        if (saveValueUp >= 63) {
+            txfBonus.setText("50");
+        }
+
+        // sets the value of the top sum
+        txfSumSame.setText(saveValueUp + "");
+
+        // sets the value of the lower sum
+        txfSumOther.setText(saveValueDown + "");
+
+        // sets the value of the total
+        txfTotal.setText(saveValueUp + saveValueDown + Integer.parseInt(txfBonus.getText()) + "");
+    }else{
+        //advarsel, man kan ikke vælge et felt uden at rulle
+    }
+}
+
+
+
+document.getElementById('die1').addEventListener('click', function () {
+    if (holds[0] == true){
+        holds[0] == false;
+    }else{
+        holds[0] == true;
+    }
 });
+document.getElementById('die2').addEventListener('click', function () {
+    if (holds[1] == true){
+        holds[1] == false;
+    }else{
+        holds[1] == true;
+    }
+});
+document.getElementById('die3').addEventListener('click', function () {
+    if (holds[2] == true){
+        holds[2] == false;
+    }else{
+        holds[2] == true;
+    }
+});
+document.getElementById('die4').addEventListener('click', function () {
+    if (holds[3] == true){
+        holds[3] == false;
+    }else{
+        holds[3] == true;
+    }
+});
+document.getElementById('die5').addEventListener('click', function () {
+    if (holds[4] == true){
+        holds[4] == false;
+    }else{
+        holds[4] == true;
+    }
+});
+//document.getElementById("bntRoll").addEventListener("click", function () {
+//    rollAction();
+//});
