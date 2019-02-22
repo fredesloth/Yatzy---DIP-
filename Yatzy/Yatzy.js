@@ -240,9 +240,10 @@ function rollAction() {
 //    console.log("" + btn.disabled);
 
     if (throwCount === 3) {
-        console.log("test");
-        //btn.disabled = true;
+        // btn.disabled = true;
         document.getElementById("btnRoll").disabled = true;
+        document.getElementById("btnRoll").style.opacity = .25;
+
     }
 }
 
