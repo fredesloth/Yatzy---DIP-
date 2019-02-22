@@ -101,11 +101,13 @@ IDs
 
     background-position: center;
     transition: background 0.5s;
+
 }
 
 #bntRoll:hover{
     background: limegreen radial-gradient(circle, transparent 1%, limegreen 1%) center/15000%;
     color: black;
+
 }
 
 #bntRoll:active{
@@ -118,16 +120,24 @@ IDs
     background-color: limegreen;
     border-radius: 12px;
     border: none;
-
-    box-shadow: 0 5px #999;
+    box-shadow: 0 5px darkgreen;
 }
 
 .diebtn:hover{
-    background-color: rgba(0,0,0,0.5);
-
+    background-color: rgba(255,255,255,.5);
 }
 
 .diebtn:active{
     box-shadow: 0 1px black;
     transform: translateY(4px);
 }
+
+img{
+    border-radius: 12px;
+}
+/*
+Eksempel på hvordan man inverter img baggrund når det skal implementeres når terning er blevet hodlt
+.diebtn:hover img{
+    -webkit-filter: invert(100%);
+} */
+
