@@ -1,13 +1,26 @@
 //I tvivl om 5 elle 6
-let values = new Array(5);
+let values = [0,0,0,0,0];
 
 let throwCount = 0;
 
 let holds = [false, false, false, false, false];
 
+let txfRes = document.querySelectorAll(".col1res");
+
+let btn = document.getElementById("btnRoll");
+
+let turn = document.getElementById("turn");
+
+let dice = document.querySelectorAll("img");
+let stringarr = ["https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/1.png",
+    "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/2.png",
+    "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/3.png",
+    "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/4.png",
+    "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/5.png",
+    "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/6.png"];
+
 //I tvivl om 5 elle 6
 // let random = Math.floor(math.random()) * 5;
-let random = Math.random();
 
 let sumValueUp = 0;
 let totalsum = 0;
@@ -15,7 +28,7 @@ let totalsum = 0;
 function throwDice(holds = []) {
     for (let i = 0 ; i <= values.length; i++){
         if (holds[i] === false){
-            values[i] = Math.flags(random * 5);
+            values[i] = Math.floor((Math.random() * 6) + 1);
         }
     }
     throwCount++;
@@ -46,17 +59,17 @@ function freqFaceValue() {
     let valueSix = 0;
 
     for(let i = 0; i < values.length; i++){
-        if(values[i] == 1){
+        if(values[i] === 1){
             valueOne++;
-        }else if(values[i] == 2){
+        }else if(values[i] === 2){
             valueTwo++;
-        }else if(values[i] == 3){
+        }else if(values[i] === 3){
             valueThree++;
-        }else if(values[i] == 4){
+        }else if(values[i] === 4){
             valueFour++;
-        }else if(values[i] == 5){
+        }else if(values[i] === 5){
             valueFive++;
-        }else if(values[i] == 6){
+        }else if(values[i] === 6){
             valueSix++;
         }
     }
@@ -74,8 +87,7 @@ function valueSpecificFace(face) {
 }
 
 function getPossibleresults() {
-    let results
-    [] = new Array(15);
+    let results = [];
     for (let i = 0; i <= 5; i++) {
         results[i] = valueSpecificFace(i + 1);
     }
@@ -126,7 +138,7 @@ function valueOnePair() {
     let value = 0;
     for (let i = 0; i < freq.length; i++){
         if(2 <= freq[i]){
-            values = 2 * i;
+            value = 2 * i;
         }
     }
     return value;
@@ -139,7 +151,7 @@ function valueTwoPair() {
     let value = 0;
     for (let i = 0; i < freq.length; i++){
         if(2 <= freq[i]){
-            values = 2 * i;
+            value = 2 * i;
             numberOfPair++;
         }
     }
@@ -161,9 +173,9 @@ function valueSmallStraight() {
     let freq = [];
     freq = freqFaceValue();
 
-    if(freq[6] == 0){
+    if(freq[6] === 0){
         for (let i = 0; i < 6; i++){
-            if(freq[i] != 1){
+            if(freq[i] !== 1){
                 return 0;
             }
         }
@@ -176,9 +188,9 @@ function valueLargeStraight() {
     let freq = [];
     freq = freqFaceValue();
 
-    if(freq[1] == 0){
+    if(freq[1] === 0){
         for (let i = 0; i < freq.length; i++){
-            if (freq[i] != 1){
+            if (freq[i] !== 1){
                 return 0;
             }
         }
@@ -195,16 +207,16 @@ function valueFullHouse() {
     freq = freqFaceValue();
 
     for (let i = 0; i < freq.length; i++){
-        if (freq[i] == 3) {
+        if (freq[i] === 3) {
             sum = sum + (3 * i);
             three = true;
         }
-        if (freq[i] == 2) {
+        if (freq[i] === 2) {
             sum = sum + (2 * i);
             two = true;
         }
     }
-    if (two && three == true){
+    if (two && three === true){
         return sum;
     }
     return 0;
@@ -226,73 +238,35 @@ function valueFullHouse() {
 
 function rollAction() {
 
-    let newHolds = [false, false, false, false, false];
-
-    //forsøg
-
-
-    for(let i = 0; i < holds.length; i++){
-        if (holds[i] = true){
-            newHolds[i] = true;
-        }
-    }
-
-    //vi skal nok lave det om til tal og textfields i stedet for billeder
     throwDice(holds);
+    console.log(values);
     //lav et array med de buttons vi har, og kør igennem det. det skal laves rundt om nuværende forloop
 
-    let dice = document.querySelectorAll("img");
-    let stringarr = ["https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/1.png",
-        "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/2.png",
-        "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/3.png",
-        "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/4.png",
-        "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/5.png",
-        "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/6.png"];
+
     for(let i = 0; i<dice.length; i++){
-        dice[i].src=stringarr[i];
+        dice[i].src=stringarr[values[i] - 1];
     }
 
-    //for(let i = 0; values.length; i++){
-    //    if(values[i] == 1){
-    //        e.src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/1.png"
-    //    }else if(values[i] == 2){
-    //        e.src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/2.png"
-    //    }else if(values[i] == 3){
-    //        e.src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/3.png"
-    //    }else if(values[i] == 4){
-    //        e.src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/4.png"
-    //    }else if(values[i] == 5){
-    //        e.src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/5.png"
-    //    }else if(values[i] == 6){
-    //        e.src="https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/6.png"
-    //    }
-
-    document.getElementById("turn").value = "rolled: " + throwCount;
+    turn.value = "rolled: " + throwCount;
 
     let posres = getPossibleresults();
     for (let i = 0; i < posres.length; i++){
-        let txtfields = document.querySelectorAll("col1res");
-        if (txtfields[i].disabled == false){
-            txtfields[i].value(posres[i] + '');
+        if (!txfRes[i].disabled){
+            txfRes[i].value = posres[i];
         }
     }
 
-    let btn = document.getElementById("btnRoll");
-    if (throwCount == 3) {
+
+    if (throwCount === 3) {
         btn.disabled = true;
     }
 }
 
 // onload for rollAction
-onload = () => {
-    let btn = document.getElementById('btnRoll');
-    btn.onclick = rollAction();
-    onclick = event => console.log(event.type);
-};
+
 
 function endCurrentRound(){
-    if(throwCount != 0){
-        let txfRes = document.querySelectorAll("col1res");
+    if(throwCount !== 0){
         for (let i = 0; i < txfRes.length; i++) {
 
             // If one of the first six fields is selected, the value is added to the top sum
@@ -327,11 +301,10 @@ function endCurrentRound(){
         for (let i = 0; i < btns.length; i++) {
             //values[i].setText("0");
             //holds[i].setDisable(true); // the check boxes are deactivated because they turn to 0
-            holds[i] == false;
+            holds[i] === false;
             btns[i].style.opacity = 1;
         }
-        resetThrowCount()
-        let btn = document.getElementById("btnRoll");
+        resetThrowCount();
         btn.disabled = false;
 
         // updates the rolled number
@@ -378,51 +351,58 @@ function endCurrentRound(){
 
 
 
-document.getElementById('die1').addEventListener('click', function () {
-    if (holds[0] == true){
-        holds[0] == false;
-        document.getElementById('die1').style.opacity = 1;
-    }else{
-        holds[0] == true;
-        document.getElementById('die1').style.opacity = 0.5;
-    }
+    document.getElementById('die1').addEventListener('click', function () {
+        if (holds[0] == true){
+            holds[0] == false;
+            document.getElementById('die1').style.opacity = 1;
+        }else{
+            holds[0] == true;
+            document.getElementById('die1').style.opacity = 0.5;
+        }
+    });
+    document.getElementById('die2').addEventListener('click', function () {
+        if (holds[1] == true){
+            holds[1] == false;
+            document.getElementById('die2').style.opacity = 1;
+        }else{
+            holds[1] == true;
+            document.getElementById('die2').style.opacity = 0.5;
+        }
+    });
+    document.getElementById('die3').addEventListener('click', function () {
+        if (holds[2] == true){
+            holds[2] == false;
+            document.getElementById('die3').style.opacity = 1;
+        }else{
+            holds[2] == true;
+            document.getElementById('die3').style.opacity = 0.5;
+        }
+    });
+    document.getElementById('die4').addEventListener('click', function () {
+        if (holds[3] == true){
+            holds[3] == false;
+            document.getElementById('die4').style.opacity = 1;
+        }else{
+            holds[3] == true;
+            document.getElementById('die4').style.opacity = 0.5;
+        }
+    });
+    document.getElementById('die5').addEventListener('click', function () {
+        if (holds[4] == true){
+            holds[4] == false;
+            document.getElementById('die5').style.opacity = 1;
+        }else{
+            holds[4] == true;
+            document.getElementById('die5').style.opacity = 0.5;
+        }
+    });
+
+
+
+document.getElementById("bntRoll").addEventListener("click", function () {
+    rollAction();
 });
-document.getElementById('die2').addEventListener('click', function () {
-    if (holds[1] == true){
-        holds[1] == false;
-        document.getElementById('die2').style.opacity = 1;
-    }else{
-        holds[1] == true;
-        document.getElementById('die2').style.opacity = 0.5;
-    }
-});
-document.getElementById('die3').addEventListener('click', function () {
-    if (holds[2] == true){
-        holds[2] == false;
-        document.getElementById('die3').style.opacity = 1;
-    }else{
-        holds[2] == true;
-        document.getElementById('die3').style.opacity = 0.5;
-    }
-});
-document.getElementById('die4').addEventListener('click', function () {
-    if (holds[3] == true){
-        holds[3] == false;
-        document.getElementById('die4').style.opacity = 1;
-    }else{
-        holds[3] == true;
-        document.getElementById('die4').style.opacity = 0.5;
-    }
-});
-document.getElementById('die5').addEventListener('click', function () {
-    if (holds[4] == true){
-        holds[4] == false;
-        document.getElementById('die5').style.opacity = 1;
-    }else{
-        holds[4] == true;
-        document.getElementById('die5').style.opacity = 0.5;
-    }
-});
-//document.getElementById("bntRoll").addEventListener("click", function () {
-//    rollAction();
-//});
+
+document.querySelector(".col1res").addEventListener('click', function () {
+    endCurrentRound();
+} );
