@@ -76,9 +76,7 @@ function freqFaceValue() {
 function valueSpecificFace(face) {
     let value_Specific_Face = [];
     value_Specific_Face = freqFaceValue();
-
-    let value = value_Specific_Face[face] * face;
-    return value;
+    return value_Specific_Face[face] * face;
 }
 
 function getPossibleresults() {
@@ -218,19 +216,6 @@ function valueFullHouse() {
 }
 
 
-
-// function holdDie(die){
-//    if(die.held){
-//        die.held = false;
-//        die.style.opacity = 1;
-//    } else {
-//        die.style.opacity = 0.5;
-//        die.held = true;
-//    }
-//}
-
-
-
 function rollAction() {
 
     throwDice(holds);
@@ -265,11 +250,11 @@ function endCurrentRound(){
         for (let i = 0; i < txfRes.length; i++) {
 
             // If one of the first six fields is selected, the value is added to the top sum
-            if (txfRes[i].hasFocus() == true && i < 6) {
+            if (txfRes[i].hasFocus() === true && i < 6) {
                 sumValueUp = sumValueUp + txfRes[i].value;
             }
             // When one of the fields is selected, it will be deactivated
-            if (txfRes[i].hasFocus() == true) {
+            if (txfRes[i].hasFocus() === true) {
                 txfRes[i].disabled = true;
             }
 
@@ -296,7 +281,7 @@ function endCurrentRound(){
         for (let i = 0; i < btns.length; i++) {
             //values[i].setText("0");
             //holds[i].setDisable(true); // the check boxes are deactivated because they turn to 0
-            holds[i] === false;
+            holds[i] = false;
             btns[i].style.opacity = 1;
         }
         resetThrowCount();
@@ -310,12 +295,12 @@ function endCurrentRound(){
 
         for (let i = 0; i < txfRes.length; i++) {
             // each time a field is disabled which means when a field is selected
-            if (txfRes[i].disabled == true) {
+            if (txfRes[i].disabled === true) {
                 roundCount = roundCount + 1; // then it will count a round
             }
         }
 
-        if (roundCount == 15) {
+        if (roundCount === 15) {
             alert("The game is finished - your total score is: " + document.getElementById('total').value);
 
             // If the user clicks on the OK button, it means that the user wants to play
