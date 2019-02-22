@@ -246,6 +246,7 @@ function rollAction() {
 
 
 function endCurrentRound(){
+    console.log('test');
     if(throwCount !== 0){
         for (let i = 0; i < txfRes.length; i++) {
 
@@ -383,6 +384,6 @@ document.getElementById("bntRoll").addEventListener("click", function () {
     rollAction();
 });
 
-document.querySelector(".col1res").addEventListener('click', function () {
-    endCurrentRound();
+document.querySelectorAll(".col1res").addEventListener('click', function () {
+    endCurrentRound(), true;
 } );
