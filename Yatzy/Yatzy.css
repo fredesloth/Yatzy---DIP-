@@ -3,7 +3,7 @@ classes
  */
 .container {
     border: 1px solid black;
-    background-image: linear-gradient(darkgreen, limegreen);
+    background-image: linear-gradient(limegreen, darkgreen);
 }
 .subcont {
     width: 500px;
@@ -21,7 +21,7 @@ classes
 }
 
 .colloums{
-    border: 1px solid yellow;
+    border: 1px solid darkgreen;
     width: 250px;
     border-radius: 12px;
 }
