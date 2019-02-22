@@ -5,13 +5,13 @@ let throwCount = 0;
 
 //I tvivl om 5 elle 6
 // let random = Math.floor(math.random()) * 5;
-let random = math.random();
+let random = Math.random();
 
 
 function throwDice(holds = []) {
     for (let i = 0 ; i <= values.length; i++){
         if (holds[i] === false){
-            values[i] = math.flags(random * 5);
+            values[i] = Math.flags(random * 5);
         }
     }
     throwCount++;
@@ -264,7 +264,7 @@ function rollAction() {
 
     let posres = getPossibleresults();
     for (let i = 0; i < posres.length; i++){
-        let txtfields = document.querySelectorAll("col1res")
+        let txtfields = document.querySelectorAll("col1res");
         if (txtfields[i]){
             // hvis txtfield !isDisabled
             //set text til result
@@ -274,8 +274,6 @@ function rollAction() {
     let btn = document.getElementById("btnRoll");
     if (yatzy.getThrowCount() == 3) {
         //btn.setDisable(true);
-    }
-
     }
 }
 document.getElementById("bntRoll").addEventListener("click", function () {
