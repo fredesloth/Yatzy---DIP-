@@ -217,6 +217,7 @@ function holdDie(die){
 }
 
 function rollAction() {
+
     let holds = [false, false, false, false, false];
 
     //forsøg
