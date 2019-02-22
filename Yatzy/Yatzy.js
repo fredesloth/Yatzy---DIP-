@@ -7,8 +7,6 @@ let holds = [false, false, false, false, false];
 
 let txfRes = document.querySelectorAll(".col1res");
 
-let btn = document.querySelector("btnRoll");
-
 let turn = document.getElementById("turn");
 
 let dice = document.querySelectorAll("img");
@@ -18,9 +16,6 @@ let stringarr = ["https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/mast
     "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/4.png",
     "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/5.png",
     "https://raw.githubusercontent.com/fredesloth/Yatzy---DIP-/master/Yatzy/Dice/6.png"];
-
-//I tvivl om 5 elle 6
-// let random = Math.floor(math.random()) * 5;
 
 let sumValueUp = 0;
 let totalsum = 0;
@@ -32,10 +27,6 @@ function throwDice(holds = []) {
         }
     }
     throwCount++;
-}
-
-function getThrowCount() {
-    return throwCount;
 }
 
 function resetThrowCount() {
@@ -227,7 +218,7 @@ function rollAction() {
         dice[i].src=stringarr[values[i] - 1];
     }
 
-    turn.value = "rolled: " + throwCount;
+    turn.innerHTML = "rolled: " + throwCount;
 
     let posres = getPossibleresults();
     for (let i = 0; i < posres.length; i++){
@@ -247,43 +238,45 @@ function rollAction() {
     }
 }
 
-// onload for rollAction
 
-
-function endCurrentRound(){
-    console.log('test');
-    if(throwCount !== 0){
+function endCurrentRound() {
+    if (throwCount !== 0) {
         for (let i = 0; i < txfRes.length; i++) {
 
             // If one of the first six fields is selected, the value is added to the top sum
             if (txfRes[i] === document.activeElement && i < 6) {
-                sumValueUp = sumValueUp + txfRes[i].value;
+                sumValueUp = sumValueUp + parseInt(txfRes[i].value);
             }
+            // makes a total sum
+            if (txfRes[i] === document.activeElement) {
+                console.log(totalsum);
+                totalsum = totalsum + parseInt(txfRes[i].value);
+            }
+
             // When one of the fields is selected, it will be deactivated
             if (txfRes[i] === document.activeElement) {
                 txfRes[i].disabled = true;
             }
 
-            sum = sum + txfRes[i];
 
 
         }
 
         // if the top sum is 63 or more - the bonus field will be 50
         if (sumValueUp >= 63) {
-            document.getElementById('bonus').value = 50;
+            document.getElementById('bonus').value = '50';
         }
 
         // sets the value of the top sum
-        document.getElementById('sum').value = sumValueUp + "";
+        document.getElementById('sum').value = sumValueUp;
 
         // sets the value of the total
-        document.getElementById('total').value = sum + document.getElementById('bonus').value;
+        document.getElementById('total').value = totalsum + parseInt(document.getElementById('bonus').value);
 
         // resets all values in the dice pane (dice face values, checkboxes will be
         // unselected, rolled number will be reset and the Roll button will be
         // activated)
-        let btns = document.querySelectorAll('diebtn');
+        let btns = document.querySelectorAll('.diebtn');
         for (let i = 0; i < btns.length; i++) {
             //values[i].setText("0");
             //holds[i].setDisable(true); // the check boxes are deactivated because they turn to 0
@@ -292,6 +285,8 @@ function endCurrentRound(){
         }
         resetThrowCount();
         document.getElementById('btnRoll').disabled = false;
+        document.getElementById("btnRoll").style.opacity = 1;
+
 
         // updates the rolled number
         let rollCount = document.getElementById('turn').value = "rolled: " + throwCount;
@@ -311,28 +306,21 @@ function endCurrentRound(){
 
             // If the user clicks on the OK button, it means that the user wants to play
             // again and the entire game will be reset
-            for (let i = 0; i < txfResults.length; i++) {
-                txfResults[i].setDisable(false);
-                txfResults[i].setText("0");
+            for (let i = 0; i < txfRes.length; i++) {
+                txfRes[i].disabled = false;
+                txfRes[i].value = "0";
             }
-            saveValueUp = 0;
-            saveValueDown = 0;
-            txfSumSame.setText("0");
-            txfBonus.setText("0");
-            txfSumOther.setText("0");
-            txfTotal.setText("0");
+            sumValueUp = 0;
+            document.getElementById("sum").value = "0";
+            document.getElementById('bonus').value = "0";
+            document.getElementById('total').value = "0";
             roundCount = 0;
-
-            //if (button.get() == ButtonType.OK) {
-            //
-            //} else {
-            //    btnRoll.setDisable(true);
-            //}
         }
-        }else{
-        alert("You must roll one time before choosing a field");
-        //advarsel, man kan ikke vælge et felt uden at rulle
-    }
+    }else {
+            alert("You must roll one time before choosing a field");
+            //advarsel, man kan ikke vælge et felt uden at rulle
+        }
+
 }
 
 
@@ -395,4 +383,3 @@ for(let i = 0; i<inputs.length; i++){
         endCurrentRound();
     } );
 }
-
