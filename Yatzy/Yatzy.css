@@ -92,13 +92,40 @@ IDs
 #col2{grid-area: col2}
 
 #bntRoll{
-    background-color: limegreen;
+    background-color: darkgreen;
     border-radius: 12px;
+    border:none;
+    color: white;
+    text-transform: uppercase;
+
+    background-position: center;
+    transition: background 0.5s;
 }
 
+#bntRoll:hover{
+    background: limegreen radial-gradient(circle, transparent 1%, limegreen 1%) center/15000%;
+    color: black;
+}
+
+#bntRoll:active{
+    background-color: white;
+    background-size: 100%;
+    transition: background 0s;
+}
 
 .diebtn {
-    background-color: limegreen;
+    background-color: black;
     border-radius: 12px;
+    border: none;
 
+    box-shadow: 0 5px #999;
+}
+
+.diebtn:hover{
+    background-color: darkgreen;
+}
+
+.diebtn:active{
+    box-shadow: 0 1px black;
+    transform: translateY(4px);
 }
