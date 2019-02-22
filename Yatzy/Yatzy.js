@@ -51,29 +51,24 @@ function setValues(newValues) {
 }
 
 function freqFaceValue() {
-    let valueOne = 0;
-    let valueTwo = 0;
-    let valueThree = 0;
-    let valueFour = 0;
-    let valueFive = 0;
-    let valueSix = 0;
+    let sameFaceValues = [0, 0, 0, 0, 0, 0];
 
     for(let i = 0; i < values.length; i++){
         if(values[i] === 1){
-            valueOne++;
+            sameFaceValues[0]++;
         }else if(values[i] === 2){
-            valueTwo++;
+            sameFaceValues[1]++;
         }else if(values[i] === 3){
-            valueThree++;
+            sameFaceValues[2]++;
         }else if(values[i] === 4){
-            valueFour++;
+            sameFaceValues[3]++;
         }else if(values[i] === 5){
-            valueFive++;
+            sameFaceValues[4]++;
         }else if(values[i] === 6){
-            valueSix++;
+            sameFaceValues[5]++;
         }
     }
-    let sameFaceValues = [valueOne, valueTwo, valueThree, valueFour, valueFive, valueSix];
+
     return sameFaceValues;
 }
 
@@ -89,7 +84,7 @@ function valueSpecificFace(face) {
 function getPossibleresults() {
     let results = [];
     for (let i = 0; i <= 5; i++) {
-        results[i] = valueSpecificFace(i + 1);
+        results[i] = valueSpecificFace(i);
     }
     results[6] = valueOnePair();
     results[7] = valueTwoPair();
@@ -352,51 +347,50 @@ function endCurrentRound(){
 
 
     document.getElementById('die1').addEventListener('click', function () {
-        if (holds[0] == true){
+        if (holds[0] == true) {
             holds[0] == false;
             document.getElementById('die1').style.opacity = 1;
-        }else{
+        } else {
             holds[0] == true;
             document.getElementById('die1').style.opacity = 0.5;
         }
     });
     document.getElementById('die2').addEventListener('click', function () {
-        if (holds[1] == true){
+        if (holds[1] == true) {
             holds[1] == false;
             document.getElementById('die2').style.opacity = 1;
-        }else{
+        } else {
             holds[1] == true;
             document.getElementById('die2').style.opacity = 0.5;
         }
     });
     document.getElementById('die3').addEventListener('click', function () {
-        if (holds[2] == true){
+        if (holds[2] == true) {
             holds[2] == false;
             document.getElementById('die3').style.opacity = 1;
-        }else{
+        } else {
             holds[2] == true;
             document.getElementById('die3').style.opacity = 0.5;
         }
     });
     document.getElementById('die4').addEventListener('click', function () {
-        if (holds[3] == true){
+        if (holds[3] == true) {
             holds[3] == false;
             document.getElementById('die4').style.opacity = 1;
-        }else{
+        } else {
             holds[3] == true;
             document.getElementById('die4').style.opacity = 0.5;
         }
     });
     document.getElementById('die5').addEventListener('click', function () {
-        if (holds[4] == true){
+        if (holds[4] == true) {
             holds[4] == false;
             document.getElementById('die5').style.opacity = 1;
-        }else{
+        } else {
             holds[4] == true;
             document.getElementById('die5').style.opacity = 0.5;
         }
     });
-
 
 
 document.getElementById("bntRoll").addEventListener("click", function () {
