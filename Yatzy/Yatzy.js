@@ -1,4 +1,3 @@
-//I tvivl om 5 elle 6
 let values = [0,0,0,0,0];
 
 let throwCount = 0;
@@ -31,14 +30,6 @@ function throwDice(holds = []) {
 
 function resetThrowCount() {
     throwCount = 0;
-}
-
-function getValues() {
-    return values;
-}
-
-function setValues(newValues) {
-    values = newValues;
 }
 
 function freqFaceValue() {
@@ -210,9 +201,6 @@ function valueFullHouse() {
 function rollAction() {
 
     throwDice(holds);
-    console.log(values);
-    //lav et array med de buttons vi har, og kør igennem det. det skal laves rundt om nuværende forloop
-
 
     for(let i = 0; i<dice.length; i++){
         dice[i].src=stringarr[values[i] - 1];
@@ -227,9 +215,6 @@ function rollAction() {
         }
     }
 
-
-//    console.log("" + btn.disabled);
-
     if (throwCount === 3) {
         // btn.disabled = true;
         document.getElementById("btnRoll").disabled = true;
@@ -237,7 +222,6 @@ function rollAction() {
 
     }
 }
-
 
 function endCurrentRound() {
     if (throwCount !== 0) {
@@ -318,12 +302,9 @@ function endCurrentRound() {
         }
     }else {
             alert("You must roll one time before choosing a field");
-            //advarsel, man kan ikke vælge et felt uden at rulle
         }
 
 }
-
-
 
     document.getElementById('die1').addEventListener('click', function () {
         if (holds[0] === true) {
@@ -371,7 +352,6 @@ function endCurrentRound() {
             document.getElementById('die5').style.opacity = 0.5;
         }
     });
-
 
 document.getElementById("btnRoll").addEventListener("click", function () {
     rollAction();
