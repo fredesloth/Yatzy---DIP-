@@ -7,7 +7,7 @@ let holds = [false, false, false, false, false];
 
 let txfRes = document.querySelectorAll(".col1res");
 
-let btn = document.getElementById("btnRoll");
+let btn = document.querySelector("btnRoll");
 
 let turn = document.getElementById("turn");
 
@@ -237,7 +237,10 @@ function rollAction() {
     }
 
 
+//    console.log("" + btn.disabled);
+
     if (throwCount === 3) {
+        console.log("test");
         btn.disabled = true;
     }
 }
@@ -380,7 +383,7 @@ function endCurrentRound(){
     });
 
 
-document.getElementById("bntRoll").addEventListener("click", function () {
+document.getElementById("btnRoll").addEventListener("click", function () {
     rollAction();
 });
 
